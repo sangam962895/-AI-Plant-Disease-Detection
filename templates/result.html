@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detection Result - AI Plant Doctor</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{font-family:'Poppins',sans-serif;}
+
+.hero{
+background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1950&q=80");
+background-size:cover;
+background-position:center;
+height:45vh;
+}
+</style>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
+<nav class="fixed w-full bg-white shadow-md z-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-center h-16">
+
+<a href="/" class="text-2xl font-bold text-green-600">
+🌿 AI Plant Doctor
+</a>
+
+<div class="space-x-8 font-medium">
+<a href="/" class="hover:text-green-600 transition">Home</a>
+<a href="/#detect" class="hover:text-green-600 transition">Detect</a>
+<a href="/about" class="hover:text-green-600 transition">About</a>
+<a href="/contact" class="hover:text-green-600 transition">Contact</a>
+</div>
+
+</div>
+</div>
+</nav>
+
+<div class="h-16"></div>
+
+<!-- HERO -->
+<section class="hero flex items-center justify-center text-white text-center">
+<h1 class="text-4xl md:text-6xl font-bold">
+AI Analysis Complete
+</h1>
+</section>
+
+<!-- RESULT CARD -->
+<div class="max-w-5xl mx-auto mt-12 mb-20 px-6">
+
+<div class="bg-white rounded-3xl shadow-2xl p-10">
+
+<!-- Uploaded Image -->
+<div class="flex justify-center mb-10">
+<img src="{{ img_path }}" class="w-80 rounded-2xl shadow-xl border-4 border-green-200">
+</div>
+
+<!-- Disease Name -->
+<div class="bg-red-50 border border-red-200 p-8 rounded-2xl mb-10 text-center">
+<p class="text-gray-500 text-sm uppercase tracking-widest mb-2">Disease Detected</p>
+<h2 class="text-4xl font-bold text-red-600">{{ disease }}</h2>
+</div>
+
+<!-- Confidence -->
+<div class="bg-green-50 border border-green-200 p-8 rounded-2xl mb-10">
+
+<div class="flex justify-between mb-3">
+<span class="text-lg font-semibold">Model Confidence</span>
+<span class="text-lg font-bold text-green-700">{{ confidence }}%</span>
+</div>
+
+<div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+<div id="progressBar"
+class="bg-gradient-to-r from-green-400 to-green-600 h-6 rounded-full transition-all duration-1000"
+style="width:0%">
+</div>
+</div>
+
+</div>
+
+<!-- Treatment (DYNAMIC) -->
+<div class="bg-emerald-50 border border-emerald-200 p-8 rounded-2xl mb-10">
+<h3 class="text-2xl font-bold mb-4 text-emerald-700">Recommended Treatment</h3>
+
+<p class="text-lg text-gray-700 leading-relaxed">
+{{ treatment }}
+</p>
+
+</div>
+
+<!-- Button -->
+<div class="text-center">
+<a href="/" class="bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-full text-xl font-semibold shadow-xl transition transform hover:scale-105">
+Analyze Another Leaf
+</a>
+</div>
+
+</div>
+</div>
+
+<script>
+window.onload = function(){
+let confidence = {{ confidence }};
+document.getElementById("progressBar").style.width = confidence + "%";
+};
+</script>
+
+</body>
+</html>
