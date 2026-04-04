@@ -1,0 +1,27 @@
+<div id="chatbotFloating" class="chatbot-floating" data-last-disease="{{ session.get('last_prediction')['disease'] if session.get('last_prediction') else '' }}" data-last-treatment="{{ session.get('last_prediction')['treatment'] if session.get('last_prediction') else '' }}">
+  <button id="chatToggleBtn" class="chatbot-toggle-btn" aria-label="Open chat">
+    🌿
+  </button>
+  <div id="chatPanel" class="chatbot-panel">
+    <div class="chatbot-header">
+      <span>AI Plant Assistant</span>
+      <button id="closeChatBtn" class="chatbot-close-btn" aria-label="Close chat">✕</button>
+    </div>
+    {% if disease %}
+    <div class="chatbot-context">Current Disease: {{ disease }}</div>
+    {% endif %}
+    <div id="chatMessages" class="chatbot-messages">
+    <div class="chatbot-suggestions">
+      <button class="suggestion-btn" data-msg="Check plant disease">Check plant disease</button>
+      <button class="suggestion-btn" data-msg="Provide complete treatment for '{{ disease | default('the detected disease') }}'.&#10;&#10;Include:&#10;- Step-by-step treatment&#10;- Medicines or fungicides&#10;- Organic/home remedies&#10;&#10;Make it practical and easy to follow.">Show treatment</button>
+      <button class="suggestion-btn" data-msg="Give prevention and care tips for '{{ disease | default('the detected disease') }}'.&#10;&#10;Include:&#10;- How to prevent it&#10;- Best farming practices&#10;- Do's and Don'ts&#10;&#10;Keep it simple and useful.">Plant care tips</button>
+      {% if session.get('last_prediction') %}
+      <button id="useLastResultBtn" class="suggestion-btn">Use last result</button>
+      {% endif %}
+    </div>
+    <div class="chatbot-input-group">
+      <input type="text" id="chatInput" class="chatbot-input" placeholder="Describe symptoms..." autocomplete="off">
+      <button id="sendBtn" class="chatbot-send-btn" aria-label="Send">Send</button>
+    </div>
+  </div>
+</div>

@@ -1,99 +1,771 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - AI Plant Doctor</title>
-<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Bootstrap 5 CSS -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%),
+              url("https://images.unsplash.com/photo-1574182645212-7adbc8376e67?auto=format&fit=crop&w=2000&q=90");
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.7s ease;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.7s ease;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.6s ease;
+}
+
+/* Card hover effect */
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Feature icons */
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card-hover:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+/* Smooth transitions */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.3);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-menu.active {
+  max-height: 300px;
+}
+
+/* Section styling */
+.section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #10b981);
+  border-radius: 999px;
+}
+
+/* Benefits list */
+.benefits-list {
+  list-style: none;
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.benefits-list li::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Process steps */
+.process-step {
+  position: relative;
+  padding-left: 4rem;
+}
+
+.process-step::before {
+  content: attr(data-number);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Stats */
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+</style>
 </head>
 
-<body class="bg-gray-100">
+<body>
 
-<!-- Navbar -->
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light nav-bg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-success" href="/">🌿 AI Plant Doctor</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<nav class="bg-white shadow-md p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-emerald-600">🌿 AI Plant Doctor</h1>
-    <div class="space-x-6 font-medium">
-        <a href="/" class="hover:text-emerald-600">Home</a>
-        <a href="/about" class="text-emerald-600 font-semibold">About</a>
-        <a href="/contact" class="hover:text-emerald-600">Contact</a>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#detect">Detect</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<!-- Hero Section -->
+  <div class="pt-5">
 
-<section class="bg-emerald-600 text-white py-16 text-center">
-    <h2 class="text-4xl font-bold mb-4">About the Project</h2>
-    <p class="max-w-2xl mx-auto text-lg">
-        AI Plant Doctor is an intelligent web application that detects plant leaf diseases
-        using Deep Learning and Computer Vision technology.
-    </p>
+<!-- HERO SECTION -->
+<section class="hero d-flex align-items-center justify-content-center text-center text-white">
+<div class="container">
+<div class="py-5">
+<h1 class="display-5 fw-bold mb-4">About AI Plant Doctor</h1>
+<p class="lead fw-normal text-light">Smart farming powered by artificial intelligence to protect your crops</p>
+</div>
+</div>
 </section>
 
-<!-- Main Content -->
+<!-- PROJECT OVERVIEW -->
+<section class="py-16 py-md-20 py-lg-24 bg-white">
+<div class="container">
 
-<div class="max-w-5xl mx-auto mt-12 px-6">
-
-```
-<!-- What is it -->
-<div class="bg-white rounded-2xl shadow-lg p-8 mb-10">
-    <h3 class="text-2xl font-bold text-emerald-700 mb-4">🌱 What is Plant Disease Detection?</h3>
-    <p class="text-gray-700 leading-relaxed">
-        Plant diseases reduce crop production and cause serious agricultural losses.
-        Early detection helps farmers take quick action. Our system analyzes leaf images
-        and automatically identifies whether the plant is healthy or infected.
-    </p>
+<div class="text-center mb-12 mb-md-16 animate-fade-in">
+<h2 class="display-5 fw-bold mb-3 text-gray-900">Project Overview</h2>
+<p class="lead text-gray-600 max-w-2xl mx-auto">
+Plant diseases cause significant agricultural losses worldwide. Early detection is key to saving crops and increasing productivity.
+</p>
 </div>
 
-<!-- How AI Helps -->
-<div class="bg-white rounded-2xl shadow-lg p-8 mb-10">
-    <h3 class="text-2xl font-bold text-emerald-700 mb-4">🤖 How Artificial Intelligence Helps</h3>
-    <p class="text-gray-700 leading-relaxed">
-        Artificial Intelligence allows automatic identification of plant diseases without
-        an expert. Farmers only need to upload a leaf image, and the system provides
-        instant results. This reduces cost, saves time, and increases crop productivity.
-    </p>
+<div class="row g-8 g-md-12 align-items-center">
+
+<!-- Left: Description -->
+<div class="col-lg-6 animate-slide-left">
+<h3 class="display-6 fw-bold text-gray-900 mb-6">What is AI Plant Doctor?</h3>
+<p class="text-gray-700 lead mb-4">
+AI Plant Doctor is an intelligent web application that combines the power of deep learning and computer vision to detect plant diseases instantly. Simply upload a photo of your plant leaf, and our AI analyzes it in seconds.
+</p>
+<p class="text-gray-700 lead mb-6">
+Whether you're a farmer managing large crops or a gardening enthusiast caring for houseplants, our system provides quick, accurate diagnoses and actionable treatment recommendations.
+</p>
+
+<ul class="benefits-list">
+<li>
+  <div>
+    <h4 class="fw-semibold text-gray-900 mb-1">Instant Detection</h4>
+    <p class="text-gray-600 small">Get results in seconds, not days</p>
+  </div>
+</li>
+<li>
+  <div>
+    <h4 class="fw-semibold text-gray-900 mb-1">95%+ Accuracy</h4>
+    <p class="text-gray-600 small">Trained on millions of leaf images</p>
+  </div>
+</li>
+<li>
+  <div>
+    <h4 class="fw-semibold text-gray-900 mb-1">Expert Guidance</h4>
+    <p class="text-gray-600 small">Detailed treatment recommendations</p>
+  </div>
+</li>
+<li>
+  <div>
+    <h4 class="fw-semibold text-gray-900 mb-1">24/7 Available</h4>
+    <p class="text-gray-600 small">Access anytime, anywhere online</p>
+  </div>
+</li>
+</ul>
 </div>
 
-<!-- Technology -->
-<div class="bg-white rounded-2xl shadow-lg p-8 mb-10">
-    <h3 class="text-2xl font-bold text-emerald-700 mb-4">🧠 Technology Used</h3>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
-
-        <div class="bg-emerald-50 p-4 rounded-xl shadow">
-            <h4 class="font-bold">Python</h4>
-        </div>
-
-        <div class="bg-emerald-50 p-4 rounded-xl shadow">
-            <h4 class="font-bold">Flask</h4>
-        </div>
-
-        <div class="bg-emerald-50 p-4 rounded-xl shadow">
-            <h4 class="font-bold">TensorFlow</h4>
-        </div>
-
-        <div class="bg-emerald-50 p-4 rounded-xl shadow">
-            <h4 class="font-bold">CNN Model</h4>
-        </div>
-
-    </div>
-
-    <p class="text-gray-700 mt-6">
-        The system uses a Convolutional Neural Network (CNN) trained on thousands of plant
-        leaf images. The model learns patterns from diseased and healthy leaves and predicts
-        the disease category accurately.
-    </p>
+<!-- Right: Image -->
+<div class="col-lg-6 animate-slide-right">
+<div class="bg-light rounded-3 p-8 p-md-12">
+<div class="text-center">
+<div class="display-1 mb-4">🌱</div>
+<p class="text-gray-700 fw-medium mb-4">Agricultural Innovation</p>
+<p class="text-gray-600 small leading-relaxed">
+Combining traditional farming wisdom with cutting-edge AI technology for better crop health management.
+</p>
 </div>
-```
+</div>
+</div>
 
 </div>
 
-<!-- Footer -->
+</div>
+</section>
 
-<footer class="bg-gray-900 text-gray-300 text-center py-6 mt-16">
-    <p>© 2024 AI Plant Doctor | Final Year Project</p>
+<!-- HOW THE AI WORKS -->
+<section class="py-16 py-md-20 py-lg-24 bg-gray-50">
+<div class="container">
+
+<div class="text-center mb-12 mb-md-16 animate-fade-in">
+<h2 class="display-5 fw-bold mb-3 text-gray-900">How The AI Model Works</h2>
+<p class="lead text-gray-600 max-w-2xl mx-auto">
+Simple enough for anyone to understand, powerful enough to rival expert botanists
+</p>
+</div>
+
+<div class="row g-8 g-md-12 mb-12">
+
+<!-- Process Steps -->
+<div class="col-lg-6 animate-slide-left">
+
+<div class="process-step mb-6" data-number="1">
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Image Upload</h4>
+<p class="text-gray-600 lead">
+You upload a clear photo of the plant leaf affected by disease. Our system accepts PNG, JPG, GIF, and WebP formats up to 10MB.
+</p>
+</div>
+
+<div class="process-step mb-6" data-number="2">
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Image Processing</h4>
+<p class="text-gray-600 lead">
+The image is processed and normalized to a standard size (224x224 pixels) for consistent analysis by our neural network.
+</p>
+</div>
+
+<div class="process-step mb-6" data-number="3">
+<h4 class="h5 fw-semibold text-gray-900 mb-2">AI Prediction</h4>
+<p class="text-gray-600 lead">
+Our CNN model analyzes patterns in the leaf and identifies the disease. The model was trained on 40+ different plant diseases.
+</p>
+</div>
+
+<div class="process-step mb-6" data-number="4">
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Results & Treatment</h4>
+<p class="text-gray-600 lead">
+You receive the disease name, confidence percentage, and detailed treatment steps to save your plant.
+</p>
+</div>
+
+</div>
+
+<!-- Visual Explanation -->
+<div class="col-lg-6 animate-slide-right">
+<div class="bg-white rounded-3 shadow-lg p-8 p-md-12">
+<h4 class="h4 fw-semibold text-gray-900 mb-6">What is a CNN?</h4>
+<p class="text-gray-700 lead mb-4">
+A Convolutional Neural Network (CNN) is an AI model inspired by how our brains process images. It learns by looking at thousands of examples.
+</p>
+
+<div class="bg-light border-start border-success border-4 p-4 rounded-end mb-6">
+<h5 class="fw-semibold text-gray-900 mb-3">The Learning Process:</h5>
+<ol class="list-unstyled text-gray-700 small">
+<li>1. Model sees healthy leaf → learns "healthy" features</li>
+<li>2. Model sees diseased leaf → learns disease patterns</li>
+<li>3. Repeats with millions of examples</li>
+<li>4. Now it can identify unseen leaves accurately</li>
+</ol>
+</div>
+
+<p class="text-gray-600 small fst-italic">
+Think of it like teaching a student: show enough examples, and they learn to identify patterns on their own.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="py-16 py-md-20 py-lg-24 bg-white">
+<div class="container">
+
+<div class="text-center mb-12 mb-md-16 animate-fade-in">
+<h2 class="display-5 fw-bold mb-3 text-gray-900">Our Features</h2>
+</div>
+
+<div class="row g-6 g-md-8">
+
+<!-- Feature 1 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up">
+<div class="feature-icon">📤</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">Easy Upload</h3>
+<p class="text-gray-600 small leading-relaxed">
+Drag & drop or click to upload. Simple, fast, and intuitive interface for all users.
+</p>
+</div>
+</div>
+
+<!-- Feature 2 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up" style="animation-delay: 0.1s;">
+<div class="feature-icon">🤖</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">AI Analysis</h3>
+<p class="text-gray-600 small leading-relaxed">
+Advanced CNN model delivers accurate disease detection with confidence scores for reliability.
+</p>
+</div>
+</div>
+
+<!-- Feature 3 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up" style="animation-delay: 0.2s;">
+<div class="feature-icon">💊</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">Treatment Guide</h3>
+<p class="text-gray-600 small leading-relaxed">
+Get expert-approved treatment recommendations tailored to your specific plant disease.
+</p>
+</div>
+</div>
+
+<!-- Feature 4 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up" style="animation-delay: 0.3s;">
+<div class="feature-icon">💬</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">Smart Chatbot</h3>
+<p class="text-gray-600 small leading-relaxed">
+Ask questions about plant care and get instant answers from our AI assistant anytime.
+</p>
+</div>
+</div>
+
+<!-- Feature 5 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up" style="animation-delay: 0.4s;">
+<div class="feature-icon">📊</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">History Tracking</h3>
+<p class="text-gray-600 small leading-relaxed">
+Track your plant health over time with detailed diagnosis history and monitoring.
+</p>
+</div>
+</div>
+
+<!-- Feature 6 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 border-start border-success border-4 animate-scale-up" style="animation-delay: 0.5s;">
+<div class="feature-icon">📱</div>
+<h3 class="h5 fw-semibold text-gray-900 mb-3">Mobile Ready</h3>
+<p class="text-gray-600 small leading-relaxed">
+Works seamlessly on desktop, tablet, and mobile devices for on-the-go plant care.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- TECHNOLOGY STACK -->
+<section class="py-16 py-md-20 py-lg-24 bg-gray-50">
+<div class="container">
+
+<div class="text-center mb-12 mb-md-16 animate-fade-in">
+<h2 class="display-5 fw-bold mb-3 text-gray-900">Technology Stack</h2>
+<p class="lead text-gray-600 max-w-2xl mx-auto">
+Built with industry-leading, open-source technologies
+</p>
+</div>
+
+<div class="row g-4 g-md-6">
+
+<!-- Tech 1 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">🐍</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Python</h4>
+<p class="text-gray-600 small">Flexible & powerful backend language</p>
+</div>
+</div>
+
+<!-- Tech 2 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">🌐</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Flask</h4>
+<p class="text-gray-600 small">Lightweight web framework</p>
+</div>
+</div>
+
+<!-- Tech 3 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">🧠</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">TensorFlow</h4>
+<p class="text-gray-600 small">Deep learning framework</p>
+</div>
+</div>
+
+<!-- Tech 4 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">🧬</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">CNN Model</h4>
+<p class="text-gray-600 small">Convolutional Neural Network</p>
+</div>
+</div>
+
+<!-- Tech 5 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">⚛️</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Bootstrap</h4>
+<p class="text-gray-600 small">Modern UI framework</p>
+</div>
+</div>
+
+<!-- Tech 6 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">📊</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">NumPy</h4>
+<p class="text-gray-600 small">Numerical computing library</p>
+</div>
+</div>
+
+<!-- Tech 7 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">🎨</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">PIL</h4>
+<p class="text-gray-600 small">Image processing library</p>
+</div>
+</div>
+
+<!-- Tech 8 -->
+<div class="col-sm-6 col-lg-4 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-6 p-md-8 text-center">
+<div class="display-1 mb-3">☁️</div>
+<h4 class="h5 fw-semibold text-gray-900 mb-2">Cloud Ready</h4>
+<p class="text-gray-600 small">Deploy anywhere, anytime</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- STATISTICS -->
+<section class="py-16 py-md-20 py-lg-24 bg-white">
+<div class="container">
+
+<div class="row g-6 g-md-8">
+
+<!-- Stat 1 -->
+<div class="col-sm-6 col-lg-3 stat-card card-hover bg-light rounded-3 shadow-lg">
+<div class="stat-number">95%+</div>
+<div class="stat-label">Detection Accuracy</div>
+</div>
+
+<!-- Stat 2 -->
+<div class="col-sm-6 col-lg-3 stat-card card-hover bg-light rounded-3 shadow-lg">
+<div class="stat-number">40+</div>
+<div class="stat-label">Plant Diseases</div>
+</div>
+
+<!-- Stat 3 -->
+<div class="col-sm-6 col-lg-3 stat-card card-hover bg-light rounded-3 shadow-lg">
+<div class="stat-number">&lt;1s</div>
+<div class="stat-label">Average Analysis Time</div>
+</div>
+
+<!-- Stat 4 -->
+<div class="col-sm-6 col-lg-3 stat-card card-hover bg-light rounded-3 shadow-lg">
+<div class="stat-number">24/7</div>
+<div class="stat-label">Always Available</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- WHY THIS PROJECT -->
+<section class="py-16 py-md-20 py-lg-24 bg-gray-50">
+<div class="container">
+
+<div class="text-center mb-12 mb-md-16 animate-fade-in">
+<h2 class="display-5 fw-bold mb-3 text-gray-900">Why This Project?</h2>
+</div>
+
+<div class="row g-8 g-md-12">
+
+<!-- Reason 1 -->
+<div class="col-lg-6 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 p-md-10 border-top border-success border-4">
+<h4 class="h4 fw-semibold text-gray-900 mb-4">🌍 Global Impact</h4>
+<p class="text-gray-600 lead">
+Plant diseases cause $220 billion in crop losses annually worldwide. Early detection with AI can prevent these losses and improve food security.
+</p>
+</div>
+</div>
+
+<!-- Reason 2 -->
+<div class="col-lg-6 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 p-md-10 border-top border-success border-4">
+<h4 class="h4 fw-semibold text-gray-900 mb-4">👨‍🌾 Farmer Empowerment</h4>
+<p class="text-gray-600 lead">
+Not all farmers have access to expert agronomists. Our system democratizes agricultural expertise and makes it accessible to everyone globally.
+</p>
+</div>
+</div>
+
+<!-- Reason 3 -->
+<div class="col-lg-6 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 p-md-10 border-top border-success border-4">
+<h4 class="h4 fw-semibold text-gray-900 mb-4">🚀 Technology Advancement</h4>
+<p class="text-gray-600 lead">
+This project demonstrates how deep learning and computer vision can solve real-world problems and improve lives at scale in agriculture.
+</p>
+</div>
+</div>
+
+<!-- Reason 4 -->
+<div class="col-lg-6 card-hover">
+<div class="bg-white rounded-3 shadow-lg p-8 p-md-10 border-top border-success border-4">
+<h4 class="h4 fw-semibold text-gray-900 mb-4">♻️ Sustainability</h4>
+<p class="text-gray-600 lead">
+Reduce pesticide use through early detection, minimize crop waste, and promote sustainable farming practices through data-driven decisions.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="py-16 py-md-20 py-lg-24 bg-success text-white">
+<div class="container">
+<div class="text-center animate-fade-in">
+
+<h2 class="display-5 fw-bold mb-4 mb-md-6">Ready to Protect Your Plants?</h2>
+<p class="lead mb-8 text-white-50">
+Start detecting plant diseases in seconds. Upload an image and get instant results.
+</p>
+
+<a href="/" class="btn btn-light btn-lg shadow-sm">
+Get Started Now →
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-4 mt-5">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h5 class="fw-bold text-success">🌿 AI Plant Doctor</h5>
+<p class="small text-muted">Advanced AI-powered plant disease detection system.</p>
+</div>
+<div class="col-md-4">
+<h6 class="fw-bold">Quick Links</h6>
+<ul class="list-unstyled small">
+<li><a href="/" class="text-muted text-decoration-none">Home</a></li>
+<li><a href="/#detect" class="text-muted text-decoration-none">Detect</a></li>
+<li><a href="/about" class="text-muted text-decoration-none">About</a></li>
+<li><a href="/contact" class="text-muted text-decoration-none">Contact</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6 class="fw-bold">Contact</h6>
+<p class="small text-muted mb-1">Email: support@plantdoctor.com</p>
+<p class="small text-muted">Phone: +1 (555) XXX-XXXX</p>
+</div>
+</div>
+<hr class="my-3">
+<p class="text-center small text-muted mb-0">© 2024 AI Plant Doctor | Leveraging AI for Agricultural Innovation</p>
+</div>
 </footer>
 
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"
+></script>
+
+<script>
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth' });
+}
+});
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+observer.unobserve(entry.target);
+}
+});
+}, observerOptions);
+
+// Observe elements for lazy animation
+document.querySelectorAll('.animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale-up').forEach(el => {
+observer.observe(el);
+});
+</script>
 </body>
 </html>
