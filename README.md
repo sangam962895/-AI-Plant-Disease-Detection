@@ -71,63 +71,72 @@ No expensive equipment. No expert appointments. Just upload a photo.
 ### 🏠 Home — Upload Interface
 > Hero section with "Detect Plant Diseases Instantly" banner, file upload form supporting PNG/JPG/JPEG/GIF/WebP up to 10MB, and the Analyze Plant button.
 
-![Home Page](screenshots/01_home.png)
+![Home Page](<img width="1686" height="874" alt="Screenshot 2026-04-05 184921" src="https://github.com/user-attachments/assets/d955bebc-1dfc-4de5-9b21-6f448e678881" />
+)
 
 ---
 
 ### 🔬 Analysis Results — Disease Detected
 > Instant diagnosis card showing the uploaded leaf image, detected disease name, confidence level bar (99% in this case), and treatment recommendations.
 
-![Analysis Results](screenshots/02_result.png)
+![Analysis Results](<img width="1364" height="779" alt="Screenshot 2026-04-05 185006" src="https://github.com/user-attachments/assets/ac209415-891e-4cf5-942a-7420ccd1d4fe" />
+)
 
 ---
 
 ### 🤖 Results + AI Chatbot Panel Open
 > The result page with the AI Plant Assistant chatbot panel open — showing quick action buttons (Check plant disease, Show treatment, Plant care tips, Use last result) and the Gemini-powered chat interface. The chatbot is pre-loaded with the current diagnosis context.
 
-![Result with Chatbot](screenshots/03_result_chat.png)
+![Result with Chatbot](<img width="1598" height="841" alt="Screenshot 2026-04-05 185032" src="https://github.com/user-attachments/assets/c96d230d-5c9f-480f-b427-02e9acc49ad9" />
+)
 
 ---
 
 ### 💬 AI Chatbot — Context-Aware Conversation
 > Zoomed-in chatbot panel showing a real conversation. The bot knows the current disease (Strawberry – Leaf Scorch) and provides tailored treatment advice in response to user queries.
 
-![Chatbot Conversation](screenshots/04_chatbot.png)
+![Chatbot Conversation](<img width="378" height="402" alt="Screenshot 2026-04-05 185049" src="https://github.com/user-attachments/assets/2fba0538-4ba4-4c70-aa11-ac92e5962ce7" />
+)
 
 ---
 
 ### ℹ️ About Page — Hero Banner
 > About page hero section: "About AI Plant Doctor — Smart farming powered by artificial intelligence to protect your crops."
 
-![About Page](screenshots/05_about.png)
+![About Page](<img width="1777" height="579" alt="Screenshot 2026-04-05 185118" src="https://github.com/user-attachments/assets/cb19a1ac-8f7e-45cd-a91c-ee19ee43337c" />
+)
 
 ---
 
 ### 📋 Project Overview Section
 > Project overview with key highlights: Instant Detection, 95%+ Accuracy, Expert Guidance, 24/7 Available — alongside the Agricultural Innovation card explaining the vision.
 
-![Project Overview](screenshots/06_overview.png)
+![Project Overview](<img width="1578" height="816" alt="Screenshot 2026-04-05 185138" src="https://github.com/user-attachments/assets/c39c1901-57d0-4eeb-ae19-38d3b0e5401d" />
+)
 
 ---
 
 ### 🧠 How The AI Model Works
 > Step-by-step explanation of the pipeline: Image Upload → Image Processing → AI Prediction → Results & Treatment, alongside a CNN explainer card showing the learning process.
 
-![How It Works](screenshots/07_how_it_works.png)
+![How It Works](<img width="1418" height="685" alt="Screenshot 2026-04-05 185150" src="https://github.com/user-attachments/assets/c915febd-42c4-41a4-9cec-fae38134b075" />
+)
 
 ---
 
 ### ⚡ Our Features Grid
 > Six feature cards: Easy Upload, AI Analysis, Treatment Guide, Smart Chatbot, History Tracking, Mobile Ready — with icons and descriptions.
 
-![Features](screenshots/08_features.png)
+![Features](<img width="1397" height="466" alt="Screenshot 2026-04-05 185205" src="https://github.com/user-attachments/assets/df7abca0-37c9-4ceb-a74f-a031a2ca977a" />
+)
 
 ---
 
 ### 🛠️ Technology Stack
 > Full tech stack display: Python, Flask, TensorFlow, CNN Model, Bootstrap, NumPy, PIL, Cloud Ready — with live stats: 95%+ accuracy, 40+ diseases, <1s analysis time, 24/7 available.
 
-![Tech Stack](screenshots/09_tech_stack.png)
+![Tech Stack](<img width="1040" height="662" alt="Screenshot 2026-04-05 185226" src="https://github.com/user-attachments/assets/6d8aa5fd-fc18-4e4b-93b0-e5d8a445dde0" />
+)
 
 ---
 
