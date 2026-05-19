@@ -4,7 +4,7 @@
 <img src="https://img.shields.io/badge/Flask-2.x-000000?style=for-the-badge&logo=flask&logoColor=white"/>
 <img src="https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"/>
 <img src="https://img.shields.io/badge/Gemini_Pro-AI-4285F4?style=for-the-badge&logo=google&logoColor=white"/>
-<img src="https://img.shields.io/badge/License-Educational-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/License-Educational-brightgreen?style=for-the-badge"/> 
 
 <br/><br/>
 
